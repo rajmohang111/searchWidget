@@ -1,6 +1,6 @@
 # Search Widget
 
-# Features
+# Components
 
 * Custom Grid Component
   * Contains search field and Grid table component.
@@ -19,8 +19,6 @@ To get the source code from GitHub, type
     git clone https://github.com/rajmohang111/searchWidget
 
 # Getting Started
-## Minimum Requirements
-
 * Open application in any web server
 
 
