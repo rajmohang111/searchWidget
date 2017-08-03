@@ -1,0 +1,19 @@
+{
+    "name": "app-name",
+    "version": "1.0.0",
+    "description": "APPNAME WiTH VERSION",
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "prestart": "npm install",
+        "start": "http-server -a 0.0.0.0 -p 8000",
+        "preupdate-webdriver": "npm install",
+        "update-webdriver": "webdriver-manager update"
+    },
+    "dependencies": {
+
+    },
+    "devDependencies": {
+        "http-server": "^0.6.1"
+    }
+}
