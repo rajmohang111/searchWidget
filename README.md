@@ -19,7 +19,11 @@ To get the source code from GitHub, type
     git clone https://github.com/rajmohang111/searchWidget
 
 # Getting Started
-* Open application in any web server
+* RUN npm install
+* RUN npm start
+* This will run application on localhost port 8000
+
+
 
 
 
