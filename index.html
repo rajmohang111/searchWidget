@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div ng-app="myApp" style="border: 8px solid #443d5d;">
+        <custom-grid> </custom-grid>
+    </div>
+</body>
+
+</html>
+<script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script type="text/javascript">
+var app = angular.module("myApp", []);
+
+app.component("customGrid", {
+    template: `<div class="search-wrap"><input type="text" id="myInput" class="search-box" ng-model="$ctrl.searchText" placeholder="SEARCH (Client Name / Policy Number)"/></div>
+        <grid-table name="$ctrl.searchText"></grid-table>`,
+    controller: function() {
+        let ctrl = this;
+        this.searchText = '';
+    }
+});
+
+app.component("gridTable", {
+    template: `<table id="myTable" class="table table-striped table-hover">
+                 <tr ng-repeat="x in $ctrl.user | filterClient:$ctrl.name">   
+                    <td>
+<span style="font-size: larger;">{{ x.ClientName }}</span>
+                        <table class="borderless">
+                        <tr>
+                        <td>
+                        <p><span class="glyphicon glyphicon-earphone"></span> {{ x.PhoneNo }}</p>
+                        </td>
+                         <td>
+                        @{{ x.Email }}
+                        </td>
+                         <td><span class="glyphicon glyphicon-file"></span>Policy No.
+                        {{x.PolicyNo  }}</td>
+                        <tr>
+                        <table>
+                    </td>
+                    <tr>
+                </table>`,
+    controller: 'myCtrl',
+    bindings: { name: '=' }
+});
+
+app.filter('filterClient', function($filter) {
+    return function(clients, text) {
+        var items = {
+            out: []
+        };
+
+        var filterText = $filter('uppercase')(text);
+
+        angular.forEach(clients, function(value, key) {
+
+            if (filterText != '') {
+
+
+                if (value.ClientName.toUpperCase().indexOf(filterText) > -1) {
+                    this.out.push(value);
+                } else if (value.PolicyNo.toUpperCase().indexOf(filterText) > -1) {
+                    this.out.push(value);
+                } else {
+                    // console.log("remove item");
+                }
+            } else {
+                this.out.push(value);
+            }
+
+        }, items);
+        return items.out;
+    };
+});
+
+app.controller('myCtrl', function($http, $filter) {
+    var vm = this;
+    var filtered = $filter('filterClient')(vm.user, vm.name);
+    vm.$onInit = function() {
+        $http.get('data.json').then(function(data) {
+            vm.user = data.data;
+        });
+    };
+
+});
+</script>

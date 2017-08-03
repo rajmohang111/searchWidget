@@ -1,0 +1,76 @@
+* {
+        box-sizing: border-box;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+    }
+
+    #myInput {
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        font-size: 26px;
+        font-weight: 500;
+        padding: 12px 20px 10px 10px;
+        border: none;
+        border-bottom: 1px solid #666;
+        margin-bottom: 16px;
+        color: #eee;
+        width: 80%;
+        background-color: transparent;
+        margin-left: 43px;  
+    }
+
+    .search-wrap {
+            background: #443d5d;
+    background-image: url(./css/searchicon.png);
+    background-repeat: no-repeat;
+    background-position: 13px 20px;
+        background-size: 20px 20px;
+    }
+
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: #bbb;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+      color: #bbb;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+      color: #bbb;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+      color: #bbb;
+    }
+
+    #myTable {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+        font-size: 18px;
+    }
+
+    #myTable th,
+    #myTable td {
+        text-align: left;
+        padding: 12px;
+    }
+
+    #myTable tr {
+        border-bottom: 1px solid #ddd;
+    }
+
+    #myTable tr.header,
+    #myTable tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .borderless {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    #myTable .borderless tr {
+        border: 0;
+    }
+
+    .table-striped>tbody>tr:nth-of-type(odd) {
+        background-color: #e8e8e8;
+    }
