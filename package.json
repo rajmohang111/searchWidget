@@ -1,19 +1,21 @@
 {
-    "name": "app-name",
-    "version": "1.0.0",
-    "description": "APPNAME WiTH VERSION",
-    "license": "UNLICENSED",
-    "private": true,
-    "scripts": {
-        "prestart": "npm install",
-        "start": "http-server -a 0.0.0.0 -p 8000",
-        "preupdate-webdriver": "npm install",
-        "update-webdriver": "webdriver-manager update"
-    },
-    "dependencies": {
-
-    },
-    "devDependencies": {
-        "http-server": "^0.6.1"
-    }
+  "name": "app-name",
+  "version": "1.0.0",
+  "description": "APPNAME WiTH VERSION",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "prestart": "npm install",
+    "start": "http-server -a 0.0.0.0 -p 8000",
+    "preupdate-webdriver": "npm install",
+    "update-webdriver": "webdriver-manager update",
+    "build-css": "node-sass --include-path scss scss/main.scss   css/main.css"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^4.4.0",
+    "http-server": "^0.6.1",
+    "node-sass": "^4.5.3",
+    "nodemon": "^1.11.0"
+  }
 }

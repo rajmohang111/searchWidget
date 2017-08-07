@@ -8,7 +8,7 @@ app.filter('filterClient', function($filter) {
 
         angular.forEach(clients, function(value, key) {
 
-            if (filterText != '') {
+            if (filterText !== '') {
 
 
                 if (value.ClientName.toUpperCase().indexOf(filterText) > -1) {
